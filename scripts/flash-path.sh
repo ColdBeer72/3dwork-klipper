@@ -8,7 +8,7 @@ if [ "$MCU" == "" ]; then
 	echo "ERROR: Please specify a device to flash"
 	exit 1
 fi
-pushd /home/pi/klipper
+pushd ~/klipper
 service klipper stop
 dfuDevicesPreFlash=$(lsusb | grep -c "0483:df11")
 if [ -h $MCU ]; then
@@ -35,7 +35,7 @@ if [ $retVal -eq 0 ]; then
 else
 	echo "Flashing failed."
 fi
-chown pi:pi -R /home/pi/klipper
+chown pi:pi -R ~/klipper
 service klipper start
 popd
 exit $retVal
