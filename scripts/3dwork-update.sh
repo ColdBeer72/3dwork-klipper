@@ -4,20 +4,20 @@ if [ "$EUID" -ne 0 ]
   exit
 fi
 
-source /home/pi/printer_data/config/3dwork-klipper/scripts/3dwork-klipper-common.sh
-source /home/pi/printer_data/config/3dwork-klipper/scripts/moonraker-ensure-policykit-rules.sh
+source ~/printer_data/config/3dwork-klipper/scripts/3dwork-klipper-common.sh
+source ~/printer_data/config/3dwork-klipper/scripts/moonraker-ensure-policykit-rules.sh
 
 ensure_ownership() {
-  chown pi:pi -R /home/pi/klipper
-  chown pi:pi -R /home/pi/klipper_config
-  chown pi:pi -R /home/pi/.KlipperScreen-env
+  chown pi:pi -R ~/klipper
+  chown pi:pi -R ~/klipper_config
+  chown pi:pi -R ~/.KlipperScreen-env
 }
 
 update_symlinks()
 {
   echo "Updating 3dwork-klipper device symlinks.."
   rm /etc/udev/rules.d/98-*.rules
-  ln -s /home/pi/printer_data/config/3dwork-klipper/boards/*/*.rules /etc/udev/rules.d/
+  ln -s ~/printer_data/config/3dwork-klipper/boards/*/*.rules /etc/udev/rules.d/
 }
 
 restart_klipper()
