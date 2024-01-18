@@ -21,9 +21,9 @@ ensure_moonraker_policiykit_rules() {
 		echo -e "\n\n###### Moonraker legacy policy exists, skipping policykit script."
 		return
 	fi
-	if [[ -e /home/pi/moonraker/scripts/set-policykit-rules.sh ]]
+	if [[ -e ~/moonraker/scripts/set-policykit-rules.sh ]]
 	then
-		cp /home/pi/moonraker/scripts/set-policykit-rules.sh /tmp/set-policykit-rules.sh
+		cp ~/moonraker/scripts/set-policykit-rules.sh /tmp/set-policykit-rules.sh
 		# if moonraker restarts the update process will be terminated, leaving a broken moonraker install.
 		sed -i 's/sudo systemctl restart moonraker/#sudo systemctl restart moonraker/g' /tmp/set-policykit-rules.sh
 		#sed -i ':a;N;$!ba;s/verify_ready\n/#verify_ready\n/g' /tmp/set-policykit-rules.sh
